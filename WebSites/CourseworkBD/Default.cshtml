@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/_AuthLayout.cshtml";
+    Page.Title = "Welcome Page";
+}
+
+<div class="well">
+    <h1>@Page.Title.</h1>
+    @if (WebSecurity.IsAuthenticated)
+    {
+        <text>
+            <h3>Hello, <a class="email" href="~/Account/Manage" title="Manage">@WebSecurity.CurrentUserName</a>!</h3>
+            <form id="logoutForm" action="~/Account/Logout" method="post">
+                @AntiForgery.GetHtml()
+                <p>
+                    <a class="btn btn-lg btn-success" href="~/Pages/Home.cshtml">Go to Personal Page</a>
+                    <p> or </p>
+                    <a class="btn btn-lg btn-danger" href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+                </p>
+            </form>
+        </text>
+    }
+    else
+    {
+
+        <text>
+            <h4>You are not Authorized</h4>
+            <p>Please Login before to continue of work.</p>
+            <a href="~/Account/Login.cshtml" class="btn btn-info btn-lg">
+                <i class="fa fa-sign-in fa-fw"></i>
+                Go to Log in.
+            </a>
+        </text>
+}
+
+</div>

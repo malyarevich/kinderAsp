@@ -1,0 +1,165 @@
+﻿@{
+    Page.Site = "Kinder Surprise";
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Coursework database technology">
+        <meta name="author" content="Paul Malyarevich">
+        <title>@Page.Site - @Page.Title</title>
+        <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/fonts.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/main.css" rel="stylesheet" type="text/css" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.10.3.js"></script>
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/script.js"></script>
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body >
+
+        <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img class="logo-header" src="~/Content/img/logo.png">
+                    <a class="navbar-brand header-title title" href="/"><span>@Page.Site</span> - <span class="current-page">@Page.Title</span></a>
+                </div>
+                <!-- /.navbar-header -->
+                <ul class="nav navbar-top-links navbar-right">
+                        @if (WebSecurity.IsAuthenticated)
+                        {
+                            <text>
+                                <li class="dropdown log-out float-right">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li>
+                                            <a href="~/Account/Manage.cshtml"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.dropdown-user -->
+                                </li>
+                                <div class="float-right" id="login">
+                                    Hello, <a class="email" href="~/Account/Manage" title="Manage">@WebSecurity.CurrentUserName</a>!
+                                    <form id="logoutForm" action="~/Account/Logout" method="post">
+                                        @AntiForgery.GetHtml()
+                                        <!-- /.dropdown -->
+                                        <!-- /.dropdown -->
+                                    </form>
+                                </div>
+                            </text>
+                        }
+                        else
+                        {
+                            <div class="float-right" id="login">
+                                <li><a href="~/Account/Register">Register</a></li>
+                                <li><a href="~/Account/Login">Log in</a></li>
+                            </div>
+                        }
+
+                    </ul>
+
+                <!-- /.navbar-top-links -->
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse collapse" aria-expanded="false">
+                        <ul class="nav" id="side-menu">
+                            <li>
+                                <a class="active" href="~/Pages/Home"><i class="fa fa-dashboard fa-fw"></i> Personal page</a>
+                            </li>
+                            <li>
+                                <a href="~/Pages/Group"><i class="fa fa-edit fa-fw"></i> Group</a>
+                            </li>
+                            <li>
+                                <a href="~/Pages/Sections"><i class="fa fa-edit fa-fw"></i> Sections</a>
+                            </li>
+                            <li>
+                                <a href="~/Pages/Circles"><i class="fa fa-edit fa-fw"></i> Circles</a>
+                            </li>
+                            <li>
+                                <a href="~/Pages/Medical"><i class="fa fa-table fa-fw"></i> Medical</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+            <div id="page-wrapper" class="well well-lg">
+                <div id="body">
+                    @RenderSection("featured", required: false)
+                    <section class="main-content clear-fix">
+                        @{
+                            if (@WebSecurity.CurrentUserId == -1)
+                            {
+                                Response.Redirect("/");
+                            }
+                         }
+                        @RenderBody()
+                    </section>
+                </div>
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+
+        <footer>
+            <div class="content-wrapper">
+                <div class="text-center OpenSans-Semibold">
+                    <h4>&copy; @DateTime.Now.Year - Kinder by Paul Malyarevich</h4>
+                </div>
+            </div>
+        </footer>
+        @RenderSection("Scripts", required: false)
+
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title"><a href="~/">your logo here</a></p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @if (WebSecurity.IsAuthenticated) {
+                            <text>
+                                Hello, <a class="email" href="~/Account/Manage" title="Manage">@WebSecurity.CurrentUserName</a>!
+                                <form id="logoutForm" action="~/Account/Logout" method="post">
+                                    @AntiForgery.GetHtml()
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+                                </form>
+                            </text>
+                        } else {
+                            <ul>
+                                <li><a href="~/Account/Register">Register</a></li>
+                                <li><a href="~/Account/Login">Log in</a></li>
+                            </ul>
+                        }
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li><a href="~/">Home</a></li>
+                            <li><a href="~/About">About</a></li>
+                            <li><a href="~/Contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </body>
+</html>

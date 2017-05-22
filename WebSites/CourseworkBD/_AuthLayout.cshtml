@@ -1,0 +1,64 @@
+﻿@{
+    Page.Site = "Kinder Surprise";
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Coursework database technology">
+        <meta name="author" content="Paul Malyarevich">
+        <title>@Page.Site - @Page.Title</title>
+        <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/fonts.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/main.css" rel="stylesheet" type="text/css" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.10.3.js"></script>
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/script.js"></script>
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body >
+
+        <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img class="logo-header" src="~/Content/img/logo.png">
+                    <a class="navbar-brand header-title title" href="/"><span>@Page.Site</span> - <span class="current-page">@Page.Title</span></a>
+                </div>
+                <!-- /.navbar-header -->
+            </nav>
+            <div id="page-wrapper-auth">
+                <div id="body">
+                    @RenderSection("featured", required: false)
+                    <section class="main-content clear-fix">
+                        @RenderBody()
+                    </section>
+                </div>
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+        
+        <footer>
+            <div class="content-wrapper">
+                <div class="text-center OpenSans-Semibold">
+                    <h4>&copy; @DateTime.Now.Year - Kinder by Paul Malyarevich</h4>
+                </div>
+            </div>
+        </footer>
+        @RenderSection("Scripts", required: false)
+
+    </body>
+</html>

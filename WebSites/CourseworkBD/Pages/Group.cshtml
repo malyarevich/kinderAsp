@@ -1,0 +1,94 @@
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Group";
+    Page.Description = "Information about group where your child is visiting";
+
+    var db = Database.Open("StarterSite");
+    var childData = db.Query("SELECT * FROM Child WHERE Child.id_child = " + @WebSecurity.CurrentUserId);
+    var id_child = childData.First()["id_child"];
+    var surname = childData.First()["surname"];
+    var first_name = childData.First()["first_name"];
+    var last_name = childData.First()["last_name"];
+    var birthday = childData.First()["birthday"];
+    var home_address = childData.First()["home_address"];
+
+    var groupData = db.Query("EXEC SelectGroupByChildID @id_child = " + @WebSecurity.CurrentUserId);
+    var id_group = groupData.First()["id_group"];
+    var name_of_group = groupData.First()["name_of_group"];
+    var lower_age = groupData.First()["lower_age"];
+    var higher_age = groupData.First()["higher_age"];
+
+    var groupSelectData = db.Query("EXEC PersDataOfSelectGroup @id_group = " + id_group);
+    var grid = new WebGrid(source: groupSelectData);
+
+    var circleData = db.Query("EXEC SelectCircleByChildID @id_child = " + @WebSecurity.CurrentUserId);
+
+}
+
+<hgroup class="title">
+    <h1>@Page.Title.</h1>
+    <h2>@Page.Description.</h2>
+</hgroup>
+
+<article>
+
+    <div class="well">
+        <div class="groupbody">
+            <div class="conteiner-fluid">
+                <div class="row">
+                    <div class="col-xs-12  col-md-6 col-lg-4">
+                        <img src="~/Content/img/Penguins.jpg" class="img-thumbnail" alt="There is no group`s page photo">
+
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-8">
+                        <p class="caption">
+                            @name_of_group
+                        </p>
+                        <hr>
+                        <div class="container-fluid">
+                            <p class="type-value">Main info:</p>
+                            <div class="value">
+                                <p> <strong>@name_of_group</strong> visites of childs, which from <strong>@lower_age</strong> to <strong>@higher_age</strong> old. </p>
+                                <p> Daily ration for child in this group = </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <p class="caption">
+                            List of group
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Full Name</th>
+                                        <th>Birthday</th>
+                                        <th>Home Address</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in groupSelectData)
+                                    {
+                                        <tr>
+                                            <td>@item["id_child"]</td>
+                                            <td>@item["full_name"]</td>
+                                            <td>@item["birthday"]</td>
+                                            <td>@item["home_address"]</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

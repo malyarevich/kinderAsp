@@ -1,0 +1,200 @@
+
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Home page";
+    Page.Description = "Personal page";
+
+    var db = Database.Open("StarterSite");
+    var childData = db.Query("SELECT * FROM Child WHERE Child.id_child = " + @WebSecurity.CurrentUserId);
+    var grid = new WebGrid(source: childData);
+    var id_child = childData.First()["id_child"];
+    var surname = childData.First()["surname"];
+    var first_name = childData.First()["first_name"];
+    var last_name = childData.First()["last_name"];
+    var birthday = childData.First()["birthday"];
+    var home_address = childData.First()["home_address"];
+
+    var groupData = db.Query("EXEC SelectGroupByChildID @id_child = " + @WebSecurity.CurrentUserId);
+    var name_of_group = groupData.First()["name_of_group"];
+    var lower_age = groupData.First()["lower_age"];
+    var higher_age = groupData.First()["higher_age"];
+
+    var circleData = db.Query("EXEC SelectCircleByChildID @id_child = " + @WebSecurity.CurrentUserId);
+
+}
+
+<hgroup class="title">
+    <h1>@Page.Title.</h1>
+    <h2>@Page.Description.</h2>
+</hgroup>
+
+<article>
+    <div class="well well-lg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="thumbnail">
+                        <img src="~/Content/img/kidIcon.jpg" class=" col-xs-12" alt="Profile Img">
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#myModal">Edit info</button>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Edit information </h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="col-md-12 text-center">
+                                        <div id="profileToggle" class="btn-group btn-toggle">
+                                            <button class="btn btn-primary active ">Personal Info</button>
+                                            <button class="btn btn-default">&nbsp Parent Info &nbsp</button>
+                                        </div>
+                                    </div>
+                                    <div id="personalInfo">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input class="form-control" id="kidName" pattern="[A-Za-z]{1,32}" placeholder="Vasiliy" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Middlename</label>
+                                            <input class="form-control" id="kidMidName" pattern="[A-Za-z]{1,32}" placeholder="Gavrilovich" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Surname</label>
+                                            <input class="form-control" id="kidSurname" pattern="[A-Za-z]{1,32}" placeholder="Nikonov" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Home address</label>
+                                            <input class="form-control" id="kidAddress" placeholder="Evergreen terrace 742" required>
+                                        </div>
+                                    </div>
+                                    <div id="parentInfo" style="display:none;">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="content">
+                                                    <div class="form-group">
+                                                        <label>Mum`s name</label>
+                                                        <input class="form-control" id="relativeName" pattern="[A-Za-z]{1,32}" placeholder="Vasiliy">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Mum`s middlename</label>
+                                                        <input class="form-control" id="relativeMdlName" pattern="[A-Za-z]{1,32}" placeholder="Gavrilovich">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Mum`s surname</label>
+                                                        <input class="form-control" id="relativeSurname" pattern="[A-Za-z]{1,32}" placeholder="Nikonov">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Mum`s address</label>
+                                                        <input class="form-control" id="relativeAddress" placeholder="Evergreen terrace 742">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Mum`s telephone number</label>
+                                                        <input class="form-control" type="tel" pattern="(\+?\d[- .]*){7,13}" id="relativeCell" placeholder="+380504547823">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Mum`s work address</label>
+                                                        <input class="form-control" id="relativeWorkAddress" placeholder="Evergreen terrace 742">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Mum`s work position</label>
+                                                        <input class="form-control" pattern="[A-Za-z]{1,32}" id="relativeWorkPosition" placeholder="Boss">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Mum`s work telephone</label>
+                                                        <input class="form-control" id="relativeWorkCell" type="tel" pattern="(\+?\d[- .]*){7,13}" placeholder="+380504547823">
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="form-group">
+                                                        <label>Father`s name</label>
+                                                        <input class="form-control" pattern="[A-Za-z]{1,32}" id="relativeName" placeholder="Vasiliy">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Father`s middlename</label>
+                                                        <input class="form-control" pattern="[A-Za-z]{1,32}" id="relativeMdlName" placeholder="Gavrilovich">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Father`s surname</label>
+                                                        <input class="form-control" pattern="[A-Za-z]{1,32}" id="relativeSurname" placeholder="Nikonov">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Father`s address</label>
+                                                        <input class="form-control" id="relativeAddress" placeholder="Evergreen terrace 742">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Father`s telephone number</label>
+                                                        <input class="form-control" type="tel" pattern="(\+?\d[- .]*){7,13}" id="relativeCell" placeholder="+380504547823">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Father`s work address</label>
+                                                        <input class="form-control" id="relativeWorkAddress" placeholder="Evergreen terrace 742">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Father`s work position</label>
+                                                        <input class="form-control" pattern="[A-Za-z]{1,32}" id="relativeWorkPosition" placeholder="Boss">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Father`s work telephone</label>
+                                                        <input class="form-control" pattern="(\+?\d[- .]*){7,13}" id="relativeWorkCell" placeholder="+380504547823">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <nav class="text-center">
+                                                    <ul class="pagination">
+                                                        <li class="pag_prev">
+                                                            <a href="#" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="pag_next">
+                                                            <a href="#" aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- </div> -->
+
+                <div class="col-xs-12 col-sm-6 col-lg-8">
+                    <p class="caption">@surname @first_name @last_name</p>
+                    <hr>
+                    <div class="container-fluid">
+                        <p class="type-value">Birthday:</p>
+                        <p class="value">@birthday.</p>
+                        <p class="type-value">Address of child:</p>
+                        <p class="value">@home_address.</p>
+                        <p class="type-value">Group info:</p>
+                        <p class="value">@name_of_group (Ages from @lower_age to @higher_age )</p>
+                        <p class="type-value">Circles info:</p>
+                        @foreach (var circle in circleData)
+                        {
+                            <p class="value">@circle["name_of_section"], cost: @circle["cost"]$ at @circle["month_sect"]/@circle["year_sect"].</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

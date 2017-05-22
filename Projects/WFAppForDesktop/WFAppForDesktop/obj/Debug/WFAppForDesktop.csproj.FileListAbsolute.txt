@@ -1,0 +1,9 @@
+c:\users\mpa\documents\visual studio 2017\Projects\WFAppForDesktop\WFAppForDesktop\bin\Debug\WFAppForDesktop.exe.config
+c:\users\mpa\documents\visual studio 2017\Projects\WFAppForDesktop\WFAppForDesktop\bin\Debug\WFAppForDesktop.exe
+c:\users\mpa\documents\visual studio 2017\Projects\WFAppForDesktop\WFAppForDesktop\bin\Debug\WFAppForDesktop.pdb
+c:\users\mpa\documents\visual studio 2017\Projects\WFAppForDesktop\WFAppForDesktop\obj\Debug\WFAppForDesktop.csprojResolveAssemblyReference.cache
+c:\users\mpa\documents\visual studio 2017\Projects\WFAppForDesktop\WFAppForDesktop\obj\Debug\WFAppForDesktop.Form1.resources
+c:\users\mpa\documents\visual studio 2017\Projects\WFAppForDesktop\WFAppForDesktop\obj\Debug\WFAppForDesktop.Properties.Resources.resources
+c:\users\mpa\documents\visual studio 2017\Projects\WFAppForDesktop\WFAppForDesktop\obj\Debug\WFAppForDesktop.csproj.GenerateResource.Cache
+c:\users\mpa\documents\visual studio 2017\Projects\WFAppForDesktop\WFAppForDesktop\obj\Debug\WFAppForDesktop.exe
+c:\users\mpa\documents\visual studio 2017\Projects\WFAppForDesktop\WFAppForDesktop\obj\Debug\WFAppForDesktop.pdb
