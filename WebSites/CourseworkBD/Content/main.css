@@ -79,25 +79,25 @@
   font-weight: 300;
   font-style: normal;
 }
-.OpenSans-LightItalic,
-.value {
+.OpenSans-LightItalic {
   font-family: 'Open Sans Light Italic';
   font-weight: 300;
   font-style: italic;
 }
 .OpenSans-Regular,
 .sidebar,
-.table-content {
-  font-family: 'Open Sans Regular';
-  font-weight: normal;
-  font-style: normal;
+.table-content,
+.value {
+    font-family: 'Open Sans Regular';
+    font-weight: normal;
+    font-style: normal;
 }
 .OpenSans-Semibold,
 .caption,
 #side-menu li a {
-  font-family: 'Open Sans Semibold';
-  font-weight: 600;
-  font-style: normal;
+    font-family: 'Open Sans Semibold';
+    font-weight: 600;
+    font-style: normal;
 }
 .OpenSans-SemiboldItalic,
 .add-post,
@@ -187,7 +187,7 @@ body {
 .page-header,
 .caption,
 .title {
-  font-size: 20px;
+  font-size: 22px;
 }
 .page-accent,
 .type-value,
@@ -195,7 +195,7 @@ body {
 .current-page,
 .links,
 #side-menu li a {
-  font-size: 16px;
+  font-size: 18px;
 }
 .page-content,
 .value,
@@ -204,7 +204,7 @@ body {
 .add-post,
 .table-content,
 .edit-info {
-  font-size: 14px;
+  font-size: 16px;
 }
 #wrapper > nav > div.navbar-header > a {
   color: #eee;

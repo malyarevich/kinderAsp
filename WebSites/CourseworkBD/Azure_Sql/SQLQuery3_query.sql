@@ -38,6 +38,26 @@ EXEC SelectCircleByChildID @id_child = 1;
 EXEC SelectCircleByChildID @id_child = 2;
 EXEC SelectCircleByChildID @id_child = 3;
 
+
+--*3 Ration of group(@id_group)
+IF EXISTS (SELECT * FROM sys.objects WHERE TYPE = 'P' AND name = 'RationOfGroup')
+  DROP PROCEDURE RationOfGroup
+GO
+CREATE PROC RationOfGroup(@id_group int)
+AS
+IF @id_group IS NOT null --Gruop
+	BEGIN
+		SELECT Rations.id_ration AS id_ration, Rations.norm AS norm, Rations.cost AS cost
+		FROM (Groups INNER JOIN Type_groups ON Groups.id_type = Type_groups.id_type) 
+		INNER JOIN Rations ON Type_groups.id_ration = Rations.id_ration
+		WHERE Groups.id_group = @id_group
+	END
+GO
+--
+EXEC RationOfGroup @id_group = 1;
+EXEC RationOfGroup @id_group = 2;
+EXEC RationOfGroup @id_group = 3;
+
 --1. Персональні дані дітей вказанної групи; 
 IF EXISTS (SELECT * FROM sys.objects WHERE TYPE = 'P' AND name = 'PersDataOfSelectGroup')
   DROP PROCEDURE PersDataOfSelectGroup

@@ -3,6 +3,10 @@
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Home page";
     Page.Description = "Personal page";
+    if (@WebSecurity.CurrentUserId == -1)
+    {
+        Response.Redirect("/");
+    }
 
     var db = Database.Open("StarterSite");
     var childData = db.Query("SELECT * FROM Child WHERE Child.id_child = " + @WebSecurity.CurrentUserId);

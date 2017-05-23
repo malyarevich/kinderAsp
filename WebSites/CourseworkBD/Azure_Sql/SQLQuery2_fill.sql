@@ -26,7 +26,7 @@ INSERT INTO Relatives(surname, first_name, last_name, home_address, telephone, p
 	('Nikolov', 'Nikol', 'Nikolovich', 'Popovskoe shosse 6', 380948654189, 'Zaporojstal', 'Podryadchik', 80612321136),
 	('Zinovov', 'Zinov', 'Zinovovich', 'Dnevnovskoe shosse 7', 380918954861, 'Alyumineviy zavod', 'Rabochiy', 80521428457),
 	('Igorov', 'Igor', 'Igorovich', 'Igorovskoe shosse 1', 380987486321, 'Dneprospecstal', 'Rabochiy', 80612124563),
-	('Oksi', 'Oksana', 'Glebovna', 'Lenina 2, 15', 380980014321, null, null, null),
+	('Oksi', 'Oksana', 'Glebovna', 'Lenina 2, 15', 380980014321, 'Zaporojstal', 'Owner', 80612242287),
 	('Olgach', 'Olga', 'Olegovna', 'Lenina 12, 66', 380987600121, 'Dneprospecstal', 'Podryadchik', 80612241387),
 	('Rio', 'Margo', 'Alekseyevna',  'Kremlyevskaya 44, 81', 380987654001, 'Alyumineviy zavod', 'Rabochiy', 80612321136),
 	('Roy', 'Pavel', 'Igorovich', 'Lenina 212, 104', 380987914601, 'Zaporojstal', 'Direktor', 80612321136),
@@ -76,36 +76,36 @@ INSERT INTO Relatives_type(id_rel_type, id_relatives) VALUES
 	(4, 19)
 GO
 INSERT INTO Child(surname, first_name, last_name, birthday, home_address, id_group, id_type_rel) VALUES
-	('Ivanov', 'Vasya', 'Ivanovich', '2012-10-22 00:00:00', null, 2, 1),
-	('Petrov', 'Alex', 'Ivanovich', '2011-06-22 00:00:00',  null, 3, 2),
-	('Petrov', 'Oleg', 'Ivanovich', '2009-06-22 00:00:00',  null, 4, 3),
-	('Sidorov', 'Artur', 'Igorovich', '2009-10-22 00:00:00', 'Home edition', 4, 4),
-	('Petrov', 'Ivan', 'Igorovich', '2010-05-22 00:00:00', 'Home edition', 4, 5),
-	('Sidorov', 'Alex', 'Igorovich', '2010-10-22 00:00:00', 'Home edition', 4, 6),
-	('Sidorov', 'Tomara', 'Artemich', '2010-10-22 00:00:00', 'Home edition', 4, 7),
-	('Sidorov', 'Silyar', 'Artemich', '2014-01-22 00:00:00', 'Home edition', 1, 8),
-	('Sidorov', 'Oleg', 'Artemich', '2013-10-22 00:00:00', 'Home edition', 1, 9),
-	('Sidorov', 'Grisha', 'Rumakich', '2012-10-22 00:00:00', 'Home edition', 3, 10),
-	('Firowa', 'Gulchitai', 'Tupovna', '2012-10-22 00:00:00', 'Home edition', 3, 11),
-	('Alekseyev', 'Jenya', 'Ivanovich', '2011-06-22 00:00:00', null, 3, 12),
-	('Alekseyev', 'Alex', 'Rumakich', '2011-05-22 00:00:00', null, 3, 13),
-	('Petrov', 'Tomara', 'Rumakivna', '2011-06-22 00:00:00', 'Home edition', 3, 14),
-	('Alekseyev', 'Alex', 'Igorovich', '2012-06-22 00:00:00', 'Home edition', 3, 15),
-	('Petrov', 'Ivan', 'Alekseevich', '2009-10-22 00:00:00', 'Home edition', 4, 16),
-	('Alekseyev', 'Nazar', 'Alekseevich', '2014-01-22 00:00:00', 'Home edition', 1, 17),
-	('Petrov', 'Tomara', 'Alekseevna', '2011-05-22 00:00:00', 'Home edition', 3, 18),
-	('Alekseyev', 'Vasya', 'Petrovich', '2012-06-22 00:00:00', null, 2, 19),
-	('Romashkin', 'Ivan', 'Alekseevna', '2011-10-22 00:00:00', 'Home edition', 3, 20),
-	('Kulinich', 'Kolya', 'Nikolaevich', '2012-05-22 00:00:00', 'Home edition', 2, 21),
-	('Petrov', 'Jenya', 'Alekseevna', '2010-05-22 00:00:00', 'Home edition', 4, 22),
-	('Kulinich', 'Vasya', 'Ivanovich', '2012-05-22 00:00:00', null, 3, 23),
-	('Petrov', 'Ivan', 'Artemich', '2013-10-22 00:00:00', 'Home edition', 2, 24),
-	('Romashkin', 'Alex', 'Nikolaevich', '2012-06-12 00:00:00', 'Home edition', 3, 25),
-	('Petrov', 'Nazar', 'Ivanovich', '2013-11-22 00:00:00', 'Home edition', 2, 20),
-	('Roy', 'Nazar', 'Artemich', '2012-12-22 00:00:00', 'Home edition', 3, 21),
-	('Roy', 'Filon', 'Alekseevich', '2012-10-22 00:00:00', 'Home edition', 3, 22),
-	('Petrov', 'Roman', 'Rumakich', '2013-04-22 00:00:00', 'Home edition', 2, 23),
-	('Kulinich', 'Darin', 'Nikolaevich', '2013-06-22 00:00:00', null, 2, 25)
+	('Ivanov', 'Vasya', 'Ivanovich', '2012-10-22', 'Lenina 22', 2, 1),
+	('Petrov', 'Alex', 'Ivanovich', '2011-06-22',  'Borodinskaya 33', 3, 2),
+	('Petrov', 'Oleg', 'Ivanovich', '2009-06-22',  'Patioticheskaya 44', 4, 3),
+	('Sidorov', 'Artur', 'Igorovich', '2009-10-22', 'Lenina 55', 4, 4),
+	('Petrov', 'Ivan', 'Igorovich', '2010-05-22', 'Kremlevskaya 66', 4, 5),
+	('Sidorov', 'Alex', 'Igorovich', '2010-10-22', 'Borodinskaya 72', 4, 6),
+	('Sidorov', 'Tomara', 'Artemich', '2010-10-22', 'Kremlevskaya 54', 4, 7),
+	('Sidorov', 'Silyar', 'Artemich', '2014-01-22', 'Borodinskaya 19', 1, 8),
+	('Sidorov', 'Oleg', 'Artemich', '2013-10-22', 'Lenina 73', 1, 9),
+	('Sidorov', 'Grisha', 'Rumakich', '2012-10-22', 'Borodinskaya 54', 3, 10),
+	('Firowa', 'Gulchitai', 'Tupovna', '2012-10-22', 'Lenina 53', 3, 11),
+	('Alekseyev', 'Jenya', 'Ivanovich', '2011-06-22', 'Borodinskaya 78', 3, 12),
+	('Alekseyev', 'Alex', 'Rumakich', '2011-05-22', 'Borodinskaya 94', 3, 13),
+	('Petrov', 'Tomara', 'Rumakivna', '2011-06-22', 'Lenina 57', 3, 14),
+	('Alekseyev', 'Alex', 'Igorovich', '2012-06-22', 'Borodinskaya 92', 3, 15),
+	('Petrov', 'Ivan', 'Alekseevich', '2009-10-22', 'Kremlevskaya 47', 4, 16),
+	('Alekseyev', 'Nazar', 'Alekseevich', '2014-01-22', 'Borodinskaya 82', 1, 17),
+	('Petrov', 'Tomara', 'Alekseevna', '2011-05-22', 'Kremlevskaya 99', 3, 18),
+	('Alekseyev', 'Vasya', 'Petrovich', '2012-06-22', 'Patioticheskaya 45', 2, 19),
+	('Romashkin', 'Ivan', 'Alekseevna', '2011-10-22', 'Borodinskaya 15', 3, 20),
+	('Kulinich', 'Kolya', 'Nikolaevich', '2012-05-22', 'Kremlevskaya 5', 2, 21),
+	('Petrov', 'Jenya', 'Alekseevna', '2010-05-22', 'Lenina 17', 4, 22),
+	('Kulinich', 'Vasya', 'Ivanovich', '2012-05-22', 'Borodinskaya 49', 3, 23),
+	('Petrov', 'Ivan', 'Artemich', '2013-10-22', 'Lenina 18', 2, 24),
+	('Romashkin', 'Alex', 'Nikolaevich', '2012-06-12', 'Borodinskaya 48', 3, 25),
+	('Petrov', 'Nazar', 'Ivanovich', '2013-11-22', 'Lenina 8', 2, 20),
+	('Roy', 'Nazar', 'Artemich', '2012-12-22', 'Kremlevskaya 72', 3, 21),
+	('Roy', 'Filon', 'Alekseevich', '2012-10-22', 'Borodinskaya 48', 3, 22),
+	('Petrov', 'Roman', 'Rumakich', '2013-04-22', 'Lenina 19', 2, 23),
+	('Kulinich', 'Darin', 'Nikolaevich', '2013-06-22', 'Borodinskaya 184', 2, 25)
 GO
 INSERT INTO Medical_card(id_child) VALUES
 	(2),
@@ -156,14 +156,14 @@ INSERT INTO Vaccination(id_med_card, exec_term, id_type_vac, id_reason) VALUES
 	(1, 12, 3, null)
 GO
 INSERT INTO Height_Weight(id_med_card, height_of_child, weight_of_child, date_of_check) VALUES
-	(1, 140, 35, '2014-10-01 00:00:00'),
-	(2, 130, 32, '2015-04-01 00:00:00'),
-	(3, 123, 28, '2015-04-01 00:00:00'),
-	(2, 134, 36, '2015-10-01 00:00:00'),
-	(4, 131, 40, '2015-10-01 00:00:00')
+	(1, 140, 35, '2014-10-01'),
+	(2, 130, 32, '2015-04-01'),
+	(3, 123, 28, '2015-04-01'),
+	(2, 134, 36, '2015-10-01'),
+	(4, 131, 40, '2015-10-01')
 GO
 INSERT INTO Sections(cost, name_of_section) VALUES
-	(45, 'Tanci'),
+	(45, 'Tantsi'),
 	(15, 'Shaski'),
 	(8, 'Pismo'),
 	(5, 'Risovanie')
@@ -196,28 +196,28 @@ INSERT INTO Type_of_passage(name_of_passage) VALUES
 	('Ne vchasno')
 GO
 INSERT INTO Medical_Journal(date_of_passage, id_passage) VALUES
-	('2015-04-01 00:00:00', 1),
-	('2015-07-10 00:00:00', 1),
-	('2015-10-01 00:00:00', 2),
-	('2015-05-01 00:00:00', 1),
-	('2015-04-01 00:00:00', 3),
-	('2015-09-01 00:00:00', 1),
-	('2015-09-11 00:00:00', 1),
-	('2015-09-15 00:00:00', 2),
-	('2015-09-14 00:00:00', 1),
-	('2015-10-15 00:00:00', 1)
+	('2015-04-01', 1),
+	('2015-07-10', 1),
+	('2015-10-01', 2),
+	('2015-05-01', 1),
+	('2015-04-01', 3),
+	('2015-09-01', 1),
+	('2015-09-11', 1),
+	('2015-09-15', 2),
+	('2015-09-14', 1),
+	('2015-10-15', 1)
 GO
 INSERT INTO Employee(surname, first_name, last_name, birthday, home_address, telephone, id_med_record) VALUES
-	('Uchilka', 'Zoya', 'Andreevna', '1975-10-15 00:00:00', null, 380954568711, 1),
-	('Uchilka', 'Tamara', 'Vasilevna', '1976-10-15 00:00:00', null, 380954645681, 2),
-	('Uchilka', 'Olga', 'Olegovna', '1987-10-15 00:00:00', null, 380954647711, 3),
-	('Uchilko', 'Vadim', 'Anatolievich', '1945-10-15 00:00:00', null, 380956835711, 4),
-	('Medikolka', 'Inna', 'Sergeevna', '1988-10-15 00:00:00', null, 380954568711, 5),
-	('Medikolka', 'Helan', 'Sergeevich', '1988-10-15 00:00:00', null, 380954165681, 6),
-	('Medikolka', 'Elan', 'Vladimirovich', '1988-10-15 00:00:00', null, 380954635711, 7),
-	('Medikolka', 'Helena', 'Ivanovna', '1988-10-15 00:00:00', null, 380954756811, 8),
-	('Medikolka', 'Elena', 'Sidorovna', '1988-10-15 00:00:00', null, 380954635568, 9),
-	('Medikolka', 'Fedora', 'Petrovna', '1988-10-15 00:00:00', null, 380955685568, 10)
+	('Uchilka', 'Zoya', 'Andreevna', '1975-10-15', null, 380954568711, 1),
+	('Uchilka', 'Tamara', 'Vasilevna', '1976-10-15', null, 380954645681, 2),
+	('Uchilka', 'Olga', 'Olegovna', '1987-10-15', null, 380954647711, 3),
+	('Uchilko', 'Vadim', 'Anatolievich', '1945-10-15', null, 380956835711, 4),
+	('Medikolka', 'Inna', 'Sergeevna', '1988-10-15', null, 380954568711, 5),
+	('Medikolka', 'Helan', 'Sergeevich', '1988-10-15', null, 380954165681, 6),
+	('Medikolka', 'Elan', 'Vladimirovich', '1988-10-15', null, 380954635711, 7),
+	('Medikolka', 'Helena', 'Ivanovna', '1988-10-15', null, 380954756811, 8),
+	('Medikolka', 'Elena', 'Sidorovna', '1988-10-15', null, 380954635568, 9),
+	('Medikolka', 'Fedora', 'Petrovna', '1988-10-15', null, 380955685568, 10)
 GO
 INSERT INTO Department(title_dept, attribute_dept) VALUES
 	('Administraciya', null),
@@ -234,16 +234,16 @@ INSERT INTO Type_of_position(title_position, id_dept, salary) VALUES
 	('Kuharka', 5, 1800)
 GO
 INSERT INTO Appointment(id_employee, id_position, date_of_employment, date_of_dismissal) VALUES
-	(10, 1, '1999-10-15 00:00:00', null),
-	(9, 2, '2004-09-15 00:00:00', null),
-	(8, 3, '2002-08-15 00:00:00', null),
-	(7, 3, '2005-04-15 00:00:00', null),
-	(6, 3, '2001-07-15 00:00:00', null),
-	(5, 4, '2006-01-15 00:00:00', null),
-	(4, 4, '2007-09-15 00:00:00', null),
-	(3, 5, '2002-02-15 00:00:00', null),
-	(2, 5, '2003-05-15 00:00:00', null),
-	(1, 5, '2004-07-15 00:00:00', null)
+	(10, 1, '1999-10-15', null),
+	(9, 2, '2004-09-15', null),
+	(8, 3, '2002-08-15', null),
+	(7, 3, '2005-04-15', null),
+	(6, 3, '2001-07-15', null),
+	(5, 4, '2006-01-15', null),
+	(4, 4, '2007-09-15', null),
+	(3, 5, '2002-02-15', null),
+	(2, 5, '2003-05-15', null),
+	(1, 5, '2004-07-15', null)
 GO
 INSERT INTO Teacher_of_section(id_section, id_employee, month_sect, year_sect) VALUES
 	(2, 3, 3, 2013),
@@ -269,31 +269,30 @@ INSERT INTO Teacher_of_section(id_section, id_employee, month_sect, year_sect) V
 	(4, 3, 10, 2015)
 GO
 INSERT INTO Visits_Journal(id_section, id_child, date_visit) VALUES
-	(1, 1, '2015-07-11 00:00:00'),
-	(1, 1, '2015-08-12 00:00:00'),
-	(2, 1, '2015-09-13 00:00:00'),
-	(3, 1, '2015-09-14 00:00:00'),
-	(3, 1, '2015-09-15 00:00:00'),
-	(2, 1, '2015-09-16 00:00:00'),
-	(1, 1, '2015-09-17 00:00:00'),
-	(2, 1, '2015-09-18 00:00:00'),
-	(2, 1, '2015-09-19 00:00:00'),	
-	(1, 1, '2015-09-12 00:00:00'),
-	(2, 1, '2015-09-13 00:00:00'),
-	(1, 2, '2015-09-12 00:00:00'),
-	(2, 2, '2015-10-13 00:00:00'),
-	(3, 2, '2015-10-14 00:00:00'),
-	(3, 3, '2015-10-15 00:00:00'),
-	(2, 3, '2015-10-16 00:00:00'),
-	(1, 2, '2015-10-17 00:00:00'),
-	(2, 4, '2015-10-18 00:00:00'),
-	(4, 3, '2015-10-18 00:00:00'),
-	(3, 7, '2015-10-18 00:00:00'),
-	(4, 11, '2015-09-18 00:00:00'),
-	(4, 11, '2015-10-18 00:00:00'),
-	(2, 5, '2015-09-15 00:00:00')
+	(1, 1, '2015-07-11'),
+	(1, 1, '2015-08-12'),
+	(2, 1, '2015-09-13'),
+	(3, 1, '2015-09-14'),
+	(3, 1, '2015-09-15'),
+	(2, 1, '2015-09-16'),
+	(1, 1, '2015-09-17'),
+	(2, 1, '2015-09-18'),
+	(2, 1, '2015-09-19'),	
+	(1, 1, '2015-09-12'),
+	(2, 1, '2015-09-13'),
+	(1, 2, '2015-09-12'),
+	(2, 2, '2015-10-13'),
+	(3, 2, '2015-10-14'),
+	(3, 3, '2015-10-15'),
+	(2, 3, '2015-10-16'),
+	(1, 2, '2015-10-17'),
+	(2, 4, '2015-10-18'),
+	(4, 3, '2015-10-18'),
+	(3, 7, '2015-10-18'),
+	(4, 11, '2015-09-18'),
+	(4, 11, '2015-10-18'),
+	(2, 5, '2015-09-15')
 GO
 USE Kinder
 SELECT *
 FROM Child
-USE master

@@ -2,6 +2,10 @@
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Circle";
     Page.Description = "Page of the one section.";
+    if (@WebSecurity.CurrentUserId == -1)
+    {
+        Response.Redirect("/");
+    }
 }
 
 <hgroup class="title">

@@ -2,7 +2,12 @@
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Group";
     Page.Description = "Information about group where your child is visiting";
+    if (@WebSecurity.CurrentUserId == -1)
+    {
+        Response.Redirect("/");
+    }
 
+    //Currunt Child
     var db = Database.Open("StarterSite");
     var childData = db.Query("SELECT * FROM Child WHERE Child.id_child = " + @WebSecurity.CurrentUserId);
     var id_child = childData.First()["id_child"];
@@ -11,17 +16,23 @@
     var last_name = childData.First()["last_name"];
     var birthday = childData.First()["birthday"];
     var home_address = childData.First()["home_address"];
-
+    //Group information
     var groupData = db.Query("EXEC SelectGroupByChildID @id_child = " + @WebSecurity.CurrentUserId);
     var id_group = groupData.First()["id_group"];
     var name_of_group = groupData.First()["name_of_group"];
     var lower_age = groupData.First()["lower_age"];
     var higher_age = groupData.First()["higher_age"];
-
+    //List of Group
     var groupSelectData = db.Query("EXEC PersDataOfSelectGroup @id_group = " + id_group);
     var grid = new WebGrid(source: groupSelectData);
-
+    //Section
     var circleData = db.Query("EXEC SelectCircleByChildID @id_child = " + @WebSecurity.CurrentUserId);
+
+    //Ration 
+    var rationData = db.Query("EXEC RationOfGroup @id_group = " + id_group);
+    var id_ration = rationData[0]["id_ration"];
+    var norm = rationData[0]["norm"];
+    var cost = rationData[0]["cost"];
 
 }
 
@@ -49,7 +60,8 @@
                             <p class="type-value">Main info:</p>
                             <div class="value">
                                 <p> <strong>@name_of_group</strong> visites of childs, which from <strong>@lower_age</strong> to <strong>@higher_age</strong> old. </p>
-                                <p> Daily ration for child in this group = </p>
+                                <p> Daily ration for child in this group = <strong>@norm</strong></p>
+                                <p>(cost of ration = <strong>@cost$</strong>)</p>
                             </div>
                         </div>
                     </div>

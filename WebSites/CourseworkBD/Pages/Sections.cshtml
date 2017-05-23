@@ -2,6 +2,10 @@
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Sections";
     Page.Description = "List of available circles";
+    if (@WebSecurity.CurrentUserId == -1)
+    {
+        Response.Redirect("/");
+    }
 }
 
 <hgroup class="title">

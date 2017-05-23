@@ -2,6 +2,10 @@
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Medical";
     Page.Description = "Health status of the child";
+    if (@WebSecurity.CurrentUserId == -1)
+    {
+        Response.Redirect("/");
+    }
 }
 
 <hgroup class="title">

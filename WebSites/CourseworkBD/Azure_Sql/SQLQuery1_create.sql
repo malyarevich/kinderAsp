@@ -87,6 +87,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'Rations') AN
 DROP TABLE Rations
 GO--1
 
+DROP TABLE Employee_BackUp
 CREATE TABLE Employee_BackUp
 (
 	id_employee INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
