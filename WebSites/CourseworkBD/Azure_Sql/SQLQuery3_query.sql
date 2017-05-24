@@ -1,5 +1,5 @@
 ﻿USE Kinder
---*1 Вывод информации о группе ребенка(id_child)
+--*1 Отримати інформацію про групу дитини за id дитини
 IF EXISTS (SELECT * FROM sys.objects WHERE TYPE = 'P' AND name = 'SelectGroupByChildID')
   DROP PROCEDURE SelectGroupByChildID
 GO
@@ -19,7 +19,7 @@ EXEC SelectGroupByChildID @id_child = 1;
 EXEC SelectGroupByChildID @id_child = 2;
 EXEC SelectGroupByChildID @id_child = 3;
 
---*2 Вывод информации о кружках ребенка(id_child)
+--*2 Отримати інформацію про гуртки дитини за id дитини.
 IF EXISTS (SELECT * FROM sys.objects WHERE TYPE = 'P' AND name = 'SelectCircleByChildID')
   DROP PROCEDURE SelectCircleByChildID
 GO
@@ -39,7 +39,7 @@ EXEC SelectCircleByChildID @id_child = 2;
 EXEC SelectCircleByChildID @id_child = 3;
 
 
---*3 Ration of group(@id_group)
+--*3 Одержати відомості про раціон групи за id групи.
 IF EXISTS (SELECT * FROM sys.objects WHERE TYPE = 'P' AND name = 'RationOfGroup')
   DROP PROCEDURE RationOfGroup
 GO
