@@ -1,8 +1,10 @@
 # kinderAsp
 http://kinders.azurewebsites.net
 
-The idea for the project, taken from https://github.com/malyarevich/kinder
+Login: login@mail.com
+Password: ForTheHorde
 
+The idea for the project, taken from https://github.com/malyarevich/kinder
 
 technical information and links
 account: main microsoft(gmail)
